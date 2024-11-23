@@ -27,7 +27,7 @@ const MovieDetailsPage = () => {
     loadMovie();
   }, [movieId]);
   return (
-    <section>
+    <section className={s.section}>
       <Link to={backLink.current}>
         <button className={s.goBackBtn}>Go back</button>
       </Link>
@@ -46,19 +46,18 @@ const MovieDetailsPage = () => {
               width="200"
               height="250"
             />
-
-            <h2>{movie.title}</h2>
-            <h3>Overview</h3>
-            <p>{movie.overview}</p>
-            <h3>Genres</h3>
-            <ul>
-              {movie.genres.map((genre) => {
-                <li key={genre.id}>{genre.name}</li>;
-              })}
-            </ul>
-
+            <div className={s.link}>
+              <h2>{movie.title}</h2>
+              <h3>Overview</h3>
+              <p>{movie.overview}</p>
+              <h3>Genres</h3>
+              <ul>
+                {movie.genres.map((genre) => {
+                  <li key={genre.id}>{genre.name}</li>;
+                })}
+              </ul>
+            </div>
             <nav className={s.nav}>
-              <p>Additional information</p>
               <NavLink className={s.NavLink} to="cast">
                 Cast
               </NavLink>

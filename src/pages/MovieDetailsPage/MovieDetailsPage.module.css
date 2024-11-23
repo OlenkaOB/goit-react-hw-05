@@ -1,6 +1,10 @@
+.section {
+    position: relative;
+}
+
 .films {
     display: flex;
-    padding: 20px;
+    padding-left: 20px;
 }
 
 
@@ -19,14 +23,20 @@
     background-color: #e0e0e0;
 }
 
-.backDiv {
+.link {
+    width: 100%;
+    max-width: 1000px;
     display: flex;
     flex-direction: column;
+    align-items: start;
+    row-gap: 12px;
 }
+
+.backDiv {}
 
 .nav {
     display: flex;
-    flex-direction: column;
+    gap: 15px;
 }
 
 
