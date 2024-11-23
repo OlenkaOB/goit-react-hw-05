@@ -1,0 +1,22 @@
+.films {
+    display: flex;
+    padding: 20px;
+}
+
+.backBtn {}
+
+.backDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.NavLink {
+    gap: 10px;
+}

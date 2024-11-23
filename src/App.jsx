@@ -1,5 +1,5 @@
 // import { Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 // import { lazy } from "react";
 import Navigation from "./components/Navigation/Navigation";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
@@ -23,19 +23,19 @@ import MovieReviews from "./components/MovieReviews/MovieReviews";
 // );
 
 function App() {
-  // const [movies, setMovies] = useState([]);
   return (
     <>
-      <Navigation />
       <div>
+        <Navigation />
+
         {/* <Suspense fallback={<h2>Loading...</h2>}> */}
         <Routes>
-          <Route path="/HomePage" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/movies" element={<MoviesPage />} />
-          <Route path="/movies/:movieId" element={<MovieDetailsPage />} />
-          <Route path="cast" element={<MovieCast />} />
-          <Route path="reviews" element={<MovieReviews />} />
-          <Route />
+          <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
+            <Route path="cast" element={<MovieCast />} />
+            <Route path="reviews" element={<MovieReviews />} />
+          </Route>
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

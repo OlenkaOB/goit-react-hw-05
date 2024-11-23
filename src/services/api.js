@@ -1,6 +1,8 @@
 import axios from "axios";
 const API_Key = import.meta.env.VITE_API_KEY;
-const BASE_URL = `https://api.themoviedb.org/3`;
+
+
+axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 
 const options = {
     headers: {
@@ -8,14 +10,29 @@ const options = {
         Authorization: `Bearer ${API_Key}`,
     }
 };
-export const FetchTrendingMovies = async () => {
-    const url = `${BASE_URL}/trending/movie/day?language=en-US}`;
-    const { data } = await axios.get(url, options);
-    return data.results;
-};
-export const searchMovies = async (query) => {
-    const url = `${BASE_URL}/saerch/movie?query=${query}&language=en-US`;
-    const { data } = await axios.get(url, options);
+export const fetchTrendingMovies = async () => {
+    const { data } = await axios.get(`trending/movie/day`, options);
     return data.results;
 
+};
+
+export const searchMovies = async (query, page) => {
+    const { data } = await axios.get(`search/movie?query=${query}&page=${page}`,
+        options
+    );
+    return data;
+};
+export const fetchMoviesDetails = async (movieId) => {
+    const { data } = await axios(`movie/${movieId}`, options);
+    return data;
+};
+
+export const fetchMovieCast = async (movieId) => {
+    const { data } = await axios(`movie/${movieId}/credits`, options);
+    return data;
+};
+
+export const fetchMovieRewiews = async (movieId) => {
+    const { data } = await axios(`movie/${movieId}/reviews`, options);
+    return data;
 };
