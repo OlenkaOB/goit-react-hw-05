@@ -1,11 +1,19 @@
-import { Outlet, useParams, NavLink } from "react-router-dom";
+import {
+  Outlet,
+  useParams,
+  NavLink,
+  useLocation,
+  Link,
+} from "react-router-dom";
 import s from "./MovieDetailsPage.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { fetchMoviesDetails } from "../../services/api";
 
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
+  const location = useLocation();
+  const backLink = useRef(location.state ?? "/movies");
 
   useEffect(() => {
     const loadMovie = async () => {
@@ -19,43 +27,49 @@ const MovieDetailsPage = () => {
     loadMovie();
   }, [movieId]);
   return (
-    <div className={s.films}>
-      {!movie ? (
-        <p>Loading...</p>
-      ) : (
-        <div className={s.backDiv}>
-          <img
-            src={
-              movie && movie.poster_path
-                ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                : "notFoundImage"
-            }
-            alt={movie.title}
-            width="200"
-            height="250"
-          />
-          <h2>{movie.title}</h2>
-          <h3>Overview</h3>
-          <p>{movie.overview}</p>
-          <h3>Genres</h3>
-          <ul>
-            {movie.genres.map((genre) => {
-              <li key={genre.id}>{genre.name}</li>;
-            })}
-          </ul>
+    <section>
+      <Link to={backLink.current}>
+        <button className={s.goBackBtn}>Go back</button>
+      </Link>
+      <div className={s.films}>
+        {!movie ? (
+          <p>Loading...</p>
+        ) : (
+          <div className={s.backDiv}>
+            <img
+              src={
+                movie && movie.poster_path
+                  ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                  : "notFoundImage"
+              }
+              alt={movie.title}
+              width="200"
+              height="250"
+            />
 
-          <nav className={s.nav}>
-            <p>Additional information</p>
-            <NavLink className={s.NavLink} to="cast">
-              Cast
-            </NavLink>
-            <NavLink to="reviews">Reviews</NavLink>
-          </nav>
+            <h2>{movie.title}</h2>
+            <h3>Overview</h3>
+            <p>{movie.overview}</p>
+            <h3>Genres</h3>
+            <ul>
+              {movie.genres.map((genre) => {
+                <li key={genre.id}>{genre.name}</li>;
+              })}
+            </ul>
 
-          <Outlet />
-        </div>
-      )}
-    </div>
+            <nav className={s.nav}>
+              <p>Additional information</p>
+              <NavLink className={s.NavLink} to="cast">
+                Cast
+              </NavLink>
+              <NavLink to="reviews">Reviews</NavLink>
+            </nav>
+
+            <Outlet />
+          </div>
+        )}
+      </div>
+    </section>
   );
 };
 

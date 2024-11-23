@@ -3,7 +3,21 @@
     padding: 20px;
 }
 
-.backBtn {}
+
+.goBackBtn {
+
+    margin-bottom: 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.goBackBtn:hover {
+    background-color: #e0e0e0;
+}
 
 .backDiv {
     display: flex;
