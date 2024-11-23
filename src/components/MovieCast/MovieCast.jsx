@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMovieCast } from "../../services/api";
+import s from "./MovieCast.module.css";
 
 const MovieCast = () => {
   const { movieId } = useParams();
@@ -28,22 +29,22 @@ const MovieCast = () => {
   if (cast.length === 0) return <p>Sorry, no cast information available.</p>;
 
   return (
-    <ul>
+    <ul className={s.link}>
       {cast.map(({ id, name, profile_path, character }) => (
-        <li key={id}>
+        <li key={id} className={s.item}>
           <img
+            className={s.img}
             src={
               profile_path
                 ? `https://image.tmdb.org/t/p/w200${profile_path}`
                 : "https://via.placeholder.com/200x300?text=No+Image"
             }
             alt={name}
-            width="100"
+            width="200"
+            height="230"
           />
-          <div>
-            <p>{name}</p>
-            <p>Character: {character}</p>
-          </div>
+          <p>{name}</p>
+          <p>{character}</p>
         </li>
       ))}
     </ul>
