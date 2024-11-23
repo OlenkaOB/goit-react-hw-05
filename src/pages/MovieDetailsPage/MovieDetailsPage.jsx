@@ -61,7 +61,9 @@ const MovieDetailsPage = () => {
               <NavLink className={s.NavLink} to="cast">
                 Cast
               </NavLink>
-              <NavLink to="reviews">Reviews</NavLink>
+              <NavLink className={s.NavLink} to="reviews">
+                Reviews
+              </NavLink>
             </nav>
 
             <Outlet />

@@ -9,10 +9,11 @@
 
 
 .goBackBtn {
-
-    margin-bottom: 0;
+    color: rgb(62, 63, 63);
+    margin: 20px 10px 0 20px;
     padding: 10px 20px;
     font-size: 16px;
+    font-weight: 400;
     background-color: transparent;
     border: none;
     border-radius: 4px;
@@ -21,6 +22,10 @@
 
 .goBackBtn:hover {
     background-color: #e0e0e0;
+}
+
+.backDiv {
+    margin-left: 20px;
 }
 
 .link {
@@ -32,7 +37,7 @@
     row-gap: 12px;
 }
 
-.backDiv {}
+
 
 .nav {
     display: flex;
@@ -42,5 +47,22 @@
 
 
 .NavLink {
+    margin-bottom: 20px;
     gap: 10px;
+}
+
+h2,
+h3 {
+    color: rgb(62, 63, 63);
+}
+
+p {
+    color: rgb(47, 48, 48);
+}
+
+.NavLink {
+    color: rgb(6, 126, 126);
+    font-size: 20px;
+    font-weight: 600;
+
 }

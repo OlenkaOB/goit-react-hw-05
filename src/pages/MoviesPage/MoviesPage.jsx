@@ -4,6 +4,7 @@ import { searchMovies } from "../../services/api";
 import MovieList from "../../components/MovieList/MovieList";
 import { Field, Form, Formik } from "formik";
 import Loader from "../../components/Loader/Loader";
+import s from "./MoviesPage.module.css";
 
 const MoviesPage = () => {
   const initialValues = { query: "" };
@@ -48,9 +49,16 @@ const MoviesPage = () => {
   return (
     <div>
       <Formik initialValues={initialValues} onSubmit={handleSearchSubmit}>
-        <Form>
-          <Field type="text" placeholder="Search movies..." name="query" />
-          <button type="submit">Search</button>
+        <Form className={s.form}>
+          <Field
+            type="text"
+            placeholder="Search movies..."
+            name="query"
+            className={s.field}
+          />
+          <button type="submit" className={s.btn}>
+            Search
+          </button>
         </Form>
       </Formik>
 

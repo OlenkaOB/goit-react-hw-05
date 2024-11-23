@@ -23,6 +23,6 @@
 
     .active {
         text-decoration: underline;
-        color: black;
+        color: rgb(85, 87, 87);
     }
 }
