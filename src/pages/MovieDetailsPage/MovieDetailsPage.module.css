@@ -10,15 +10,15 @@
 
 
 .goBackBtn {
-    color: rgb(62, 63, 63);
     margin: 20px 10px 0 20px;
     padding: 10px 20px;
-    font-size: 16px;
-    font-weight: 400;
     background-color: transparent;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgb(62, 63, 63);
 }
 
 .goBackBtn:hover {
@@ -51,12 +51,13 @@
 
 
 .NavLink {
+    display: flex;
     margin-bottom: 20px;
     gap: 10px;
 }
 
 .NavLink:hover {
-    color: rgb(226, 12, 144);
+    color: rgb(78, 5, 50);
 }
 
 h2,
